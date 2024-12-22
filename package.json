@@ -1,0 +1,18 @@
+{
+  "name": "HelloWorld",
+  "version": "0.1.0",
+  "description": "My Chrome Extension",
+  "private": true,
+  "scripts": {
+    "watch": "webpack --mode=development --watch --config config/webpack.config.js",
+    "build": "webpack --mode=production --config config/webpack.config.js"
+  },
+  "devDependencies": {
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "babel-loader": "^8.2.3",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "copy-webpack-plugin": "^11.0.0"
+  }
+}
