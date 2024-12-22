@@ -1,7 +1,7 @@
 # HelloWorld Chrome Extension
 
 ## 專案名稱
-HelloWorld Chrome Wenb Extension
+HelloWorld Chrome Web Extension
 
 ## 如何從零開始建立專案
 
@@ -19,7 +19,7 @@ HelloWorld Chrome Wenb Extension
 3. 建立必要的檔案和資料夾：
     ```bash
     mkdir src
-    touch src/manifest.json src/background.js src/index.html src/index.js
+    touch src/manifest.json src/background.js src/index.html src/index.js src/content.js
     mkdir -p src/images/icons
     ```
 
@@ -43,7 +43,16 @@ HelloWorld Chrome Wenb Extension
         }
       },
       "permissions": [
-        "storage"
+        "storage",
+        "tabs",
+        "activeTab",
+        "scripting"
+      ],
+      "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["content.js"]
+        }
       ]
     }
     ```
@@ -77,6 +86,7 @@ HelloWorld Chrome Wenb Extension
 - `index.html`: 擴充功能的彈出頁面，當用戶點擊擴充功能圖標時顯示。
 - `images/icons/`: 存放擴充功能的圖標文件。
 - `index.js`: 彈出頁面的 JavaScript 文件。
+- `content.js`: 內容腳本，允許在網頁的上下文中執行 JavaScript 代碼。
 
 ## 如何開發專案
 - 在專案根目錄下執行以下命令：

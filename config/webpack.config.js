@@ -31,9 +31,7 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/manifest.json', to: '' },
-        { from: 'src/index.html', to: '' },
-        { from: 'src/background.js', to: '' },
+        { from: 'src', to: '' },
         { from: 'src/images', to: 'images' }
       ]
     })
