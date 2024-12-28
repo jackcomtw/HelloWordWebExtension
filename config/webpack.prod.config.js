@@ -1,6 +1,9 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack'); // 引入 webpack
+
 
 module.exports = {
   entry: {
@@ -11,7 +14,7 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, '../dist')
   },
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
@@ -29,10 +32,12 @@ module.exports = {
   resolve: {
     extensions: ['.js']
   },
-  watchOptions: {
-    ignored: /node_modules/
+  optimization: {
+    minimize: true, // 啟用代碼壓縮
+    minimizer: [new TerserPlugin()] // 使用 TerserPlugin 進行壓縮
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src', to: '' },
@@ -42,6 +47,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
-    })    
+    })        
   ]
 };
