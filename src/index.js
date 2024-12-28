@@ -1,14 +1,16 @@
+import $ from 'jquery';
 console.log('Hello from index.js');
 
-document.addEventListener('DOMContentLoaded', function() {
+//document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
     if (!tabs || !tabs.length || !tabs[0].url) {
-      document.getElementById('current-url').textContent = 'No active tab';
+      $('#current-url').text('No active tab');
       return;
     }
     var activeTab = tabs[0];
     var url = activeTab.url;
-    document.getElementById('current-url').textContent = url;
+    $('#current-url').text(url);
 
     if (url.startsWith('chrome://')) {
         console.log('Cannot access chrome:// URLs');
