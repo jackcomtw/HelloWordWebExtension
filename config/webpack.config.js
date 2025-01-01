@@ -35,8 +35,7 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src', to: '' },
-        { from: 'src/images', to: 'images' }
+        { from: 'src', to: '' }
       ]
     }),
     new webpack.ProvidePlugin({

@@ -40,8 +40,11 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src', to: '' },
-        { from: 'src/images', to: 'images' }
+        // { from: 'src/manifest.json', to: 'manifest.json' },
+        // { from: 'src/images', to: 'images' },
+        // { from: 'src/background.js', to: 'background.js' },
+        // { from: 'src/index.html', to: 'index.html' }
+        { from: 'src', to: '' } 
       ]
     }),
     new webpack.ProvidePlugin({

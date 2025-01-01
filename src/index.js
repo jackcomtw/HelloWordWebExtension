@@ -1,7 +1,6 @@
 import $ from 'jquery';
 console.log('Hello from index.js');
 
-//document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function() {
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
     if (!tabs || !tabs.length || !tabs[0].url) {
@@ -22,7 +21,15 @@ $(document).ready(function() {
         target: { tabId: activeTab.id },
         files: ['activePage.js']
       },
-      () => {
+      (injectionResults) => {
+        if (chrome.runtime.lastError) {
+          console.error("注入錯誤:", chrome.runtime.lastError);
+          return;
+        }
+        injectionResults.forEach((result) => {
+          console.log('注入結果:', result);
+        });
+
         chrome.tabs.sendMessage(activeTab.id, { action: "getPageContent" }, function(response) {
           if (response && response.content) {
             console.log('Page content:', response.content);
