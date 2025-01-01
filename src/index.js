@@ -30,7 +30,7 @@ $(document).ready(function() {
           console.log('注入結果:', result);
         });
 
-        chrome.tabs.sendMessage(activeTab.id, { action: "getPageContent" }, function(response) {
+        chrome.tabs.sendMessage(activeTab.id, { action: "getPageContent" , url: url }, function(response) {
           if (response && response.content) {
             console.log('Page content:', response.content);
           } else {

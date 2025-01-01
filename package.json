@@ -18,6 +18,8 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "jquery": "^3.7.1"
+    "@postlight/parser": "^2.2.3",
+    "jquery": "^3.7.1",
+    "url": "^0.11.4"
   }
 }
